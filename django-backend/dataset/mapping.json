@@ -1,0 +1,214 @@
+{
+  "properties": {
+    "AIRLINE_CODE": {
+      "type": "text",
+      "fields": {
+        "keyword": {
+          "type": "keyword",
+          "ignore_above": 256
+        }
+      }
+    },
+    "AIRLINE_DELAY": {
+      "type": "long"
+    },
+    "AIRLINE_NAME": {
+      "type": "text",
+      "fields": {
+        "keyword": {
+          "type": "keyword",
+          "ignore_above": 256
+        }
+      }
+    },
+    "AIR_SYSTEM_DELAY": {
+      "type": "long"
+    },
+    "AIR_TIME": {
+      "type": "long"
+    },
+    "ARRIVAL_DELAY": {
+      "type": "long"
+    },
+    "ARRIVAL_TIME": {
+      "type": "date"
+    },
+    "CANCELLATION_REASON": {
+      "type": "text",
+      "fields": {
+        "keyword": {
+          "type": "keyword",
+          "ignore_above": 256
+        }
+      }
+    },
+    "CANCELLED": {
+      "type": "long"
+    },
+    "DATE": {
+      "type": "date"
+    },
+    "DAY_OF_WEEK": {
+      "type": "text",
+      "fields": {
+        "keyword": {
+          "type": "keyword",
+          "ignore_above": 256
+        }
+      }
+    },
+    "DEPARTURE_DELAY": {
+      "type": "long"
+    },
+    "DEPARTURE_TIME": {
+      "type": "date"
+    },
+    "DESTINATION_AIRPORT": {
+      "type": "text",
+      "fields": {
+        "keyword": {
+          "type": "keyword",
+          "ignore_above": 256
+        }
+      }
+    },
+    "DESTINATION_AIRPORT_CITY": {
+      "type": "text",
+      "fields": {
+        "keyword": {
+          "type": "keyword",
+          "ignore_above": 256
+        }
+      }
+    },
+    "DESTINATION_AIRPORT_COORDINATES": {
+      "type": "geo_point"
+    },
+    "DESTINATION_AIRPORT_COUNTRY": {
+      "type": "text",
+      "fields": {
+        "keyword": {
+          "type": "keyword",
+          "ignore_above": 256
+        }
+      }
+    },
+    "DESTINATION_AIRPORT_NAME": {
+      "type": "text",
+      "fields": {
+        "keyword": {
+          "type": "keyword",
+          "ignore_above": 256
+        }
+      }
+    },
+    "DESTINATION_AIRPORT_STATE": {
+      "type": "text",
+      "fields": {
+        "keyword": {
+          "type": "keyword",
+          "ignore_above": 256
+        }
+      }
+    },
+    "DISTANCE": {
+      "type": "long"
+    },
+    "DIVERTED": {
+      "type": "long"
+    },
+    "ELAPSED_TIME": {
+      "type": "long"
+    },
+    "FLIGHT_NUMBER": {
+      "type": "long"
+    },
+    "LATE_AIRCRAFT_DELAY": {
+      "type": "long"
+    },
+    "ORIGIN_AIRPORT": {
+      "type": "text",
+      "fields": {
+        "keyword": {
+          "type": "keyword",
+          "ignore_above": 256
+        }
+      }
+    },
+    "ORIGIN_AIRPORT_CITY": {
+      "type": "text",
+      "fields": {
+        "keyword": {
+          "type": "keyword",
+          "ignore_above": 256
+        }
+      }
+    },
+    "ORIGIN_AIRPORT_COORDINATES": {
+      "type": "geo_point"
+    },
+    "ORIGIN_AIRPORT_COUNTRY": {
+      "type": "text",
+      "fields": {
+        "keyword": {
+          "type": "keyword",
+          "ignore_above": 256
+        }
+      }
+    },
+    "ORIGIN_AIRPORT_NAME": {
+      "type": "text",
+      "fields": {
+        "keyword": {
+          "type": "keyword",
+          "ignore_above": 256
+        }
+      }
+    },
+    "ORIGIN_AIRPORT_STATE": {
+      "type": "text",
+      "fields": {
+        "keyword": {
+          "type": "keyword",
+          "ignore_above": 256
+        }
+      }
+    },
+    "SCHEDULED_ARRIVAL": {
+      "type": "date"
+    },
+    "SCHEDULED_DEPARTURE": {
+      "type": "date"
+    },
+    "SCHEDULED_TIME": {
+      "type": "long"
+    },
+    "SECURITY_DELAY": {
+      "type": "long"
+    },
+    "TAIL_NUMBER": {
+      "type": "text",
+      "fields": {
+        "keyword": {
+          "type": "keyword",
+          "ignore_above": 256
+        }
+      }
+    },
+    "TAXI_IN": {
+      "type": "long"
+    },
+    "TAXI_OUT": {
+      "type": "long"
+    },
+    "WEATHER_DELAY": {
+      "type": "long"
+    },
+    "WHEELS_OFF": {
+      "type": "date"
+    },
+    "WHEELS_ON": {
+      "type": "date"
+    }
+  }
+}

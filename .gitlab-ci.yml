@@ -1,0 +1,54 @@
+variables:
+  DOCKER_TLS_CERTDIR: "" # https://gitlab.com/gitlab-org/gitlab-runner/issues/4501
+
+stages:
+  - build
+  - test
+  - deploy
+
+services:
+  - docker:19.03-dind # Docker in Docker to use our docker-compose container to test
+
+# Doing this stuff here so it is shared across all jobs. 
+# TODO: Should be cached to work faster
+before_script:
+  - apt-get update
+  - apt-get install --no-install-recommends -y python3-pip python3-setuptools bc curl
+  - pip3 install docker-compose-wait
+  # Timeout to avoid non-reachable docker
+  - docker-compose build || (sleep 10 && docker-compose build)
+  - docker-compose up -d elasticsearch
+  - bash scripts/wait-for-healthcheck.sh
+  # Ingest a sample of data to get django up
+  - docker-compose run django-backend ./ingest-data.sh 
+  - docker-compose up -d
+  - docker-compose-wait
+
+build_containers: # job name
+  stage: build
+  image: docker/compose:debian-1.25.5
+  only:
+    - develop
+    - master
+  script: 
+    - echo "If it echoes this it means that the build went good."
+
+test_containers: # job name
+  stage: test
+  image: docker/compose:debian-1.25.5
+  only:
+    - develop
+    - master
+  script: 
+    - docker-compose run django-backend python3 ./manage.py test --pattern="tests*.py"
+
+deploy_containers:
+  before_script:
+    - echo "Starting deploying"
+    - which ssh-agent || ( apt-get update && apt-get install openssh-client -y )
+  stage: deploy
+  image: ubuntu
+  only:
+    - master
+  script:
+    - bash scripts/gitlab-ci-deploy.sh

@@ -1,0 +1,15 @@
+HOW TO USE THE SCRIPTS
+
+
+FILE: data_cleaning.py
+- python3 data_cleaning.py
+- python3 data_cleaning.py ../Datasets/
+- takes as (optional) input the path to the dataset folder, the default is "."
+- limitation: cleanes up to 100k row
+- time: ~6min, <1m for 10k rows
+
+
+
+FILE: data_cleaning.json
+- run with zeppeling
+- change in the first paragraph the value of path to the dataset folder

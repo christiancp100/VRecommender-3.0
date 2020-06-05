@@ -1,0 +1,15 @@
+# Mac system file
+.DS_Store
+
+# IDEr files
+.idea
+.vscode
+
+# Data formats
+.json
+.csv
+.bak
+
+
+# python cache
+__pycache__

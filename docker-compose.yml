@@ -1,0 +1,50 @@
+version: "3.7"
+services:
+  vuejs-frontend:
+    build: vuejs-frontend
+    ports:
+      - 8080:8080
+    volumes:
+      # map local to remote folder, exclude node_modules
+      - ./vuejs-frontend:/app
+      - /app/node_modules/
+    healthcheck:
+      test: ["CMD-SHELL", "curl --silent --fail http://localhost:8080/healthcheck || exit 1"]
+      timeout: 20s
+      interval: 20s
+      retries: 3
+
+
+  django-backend:
+    build: django-backend
+    ports:
+      - 8000:8000
+    volumes:
+      - ./django-backend:/app
+    depends_on: 
+      - elasticsearch
+    healthcheck:
+      test: ["CMD-SHELL", "curl --silent --fail http://localhost:8000/healthcheck || exit 1"]
+      timeout: 20s
+      interval: 20s
+      retries: 3
+
+  elasticsearch:
+    # https://www.elastic.co/guide/en/elasticsearch/reference/7.6/docker.html
+    image: elasticsearch:7.6.2
+    ports:
+      - 9200:9200
+      - 9300:9300
+    environment:
+      # This variable is for development only: uses a single node
+      discovery.type: single-node
+    volumes:
+      - elastic-volume:/usr/share/elasticsearch/data
+    healthcheck:
+      test: ["CMD-SHELL", "curl --silent --fail http://localhost:9200/_cluster/health?wait_for_status=yellow&timeout=5s || exit 1"]
+      timeout: 20s
+      interval: 20s
+      retries: 3
+
+volumes:
+  elastic-volume:

@@ -1,0 +1,10 @@
+version: "3.7"
+services:
+  vuejs-frontend:
+    restart: always
+
+  django-backend:
+    restart: always
+    
+  elasticsearch:
+    restart: always
